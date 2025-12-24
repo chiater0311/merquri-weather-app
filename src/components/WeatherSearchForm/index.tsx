@@ -2,7 +2,11 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { fetchCurrentWeather } from "../../services/openWeatherApi";
-import type { OpenWeatherResponse } from "../../types/weather";
+import type {
+  OpenWeatherResponse,
+  WeatherSearchHistoryItem,
+} from "../../types/weather";
+import { useWeatherSearchHistory } from "../../hooks/useWeatherSearchHistory";
 
 type WeatherFormValues = {
   city: string;
@@ -28,6 +32,13 @@ const WeatherSearchForm = () => {
 
   const [weather, setWeather] = useState<OpenWeatherResponse | null>(null);
 
+  const {
+    items: history,
+    addItem,
+    removeItem,
+    clearHistory,
+  } = useWeatherSearchHistory();
+
   const performSearch = async (city: string, country: string) => {
     try {
       // Reset previous errors and search weather
@@ -39,6 +50,9 @@ const WeatherSearchForm = () => {
 
       const data = await fetchCurrentWeather(trimmedCity, trimmedCountry);
       setWeather(data);
+
+      // Add to history on successful search
+      addItem(trimmedCity, trimmedCountry);
     } catch (error) {
       const message =
         error instanceof Error
@@ -60,6 +74,16 @@ const WeatherSearchForm = () => {
     reset(DEFAULT_VALUES);
     clearErrors();
     setWeather(null);
+  };
+
+  const handleHistorySearch = (item: WeatherSearchHistoryItem) => {
+    // populate form with selected history item
+    reset({
+      city: item.city,
+      country: item.country,
+    });
+
+    performSearch(item.city, item.country);
   };
 
   return (
@@ -152,6 +176,59 @@ const WeatherSearchForm = () => {
           {weather.weather?.[0] && (
             <p>Description: {weather.weather[0].description}</p>
           )}
+        </div>
+      )}
+
+      {/* Search History */}
+      {history.length > 0 && (
+        <div className="mt-6">
+          <div className="flex items-center justify-between mb-2">
+            <h2 className="text-sm font-semibold">Search History</h2>
+            {history.length > 1 && (
+              <button
+                type="button"
+                onClick={clearHistory}
+                className="text-[11px] underline text-slate-500 hover:text-slate-700"
+              >
+                Clear all
+              </button>
+            )}
+          </div>
+
+          <ul className="space-y-2 max-h-60 overflow-y-auto pr-1">
+            {history.map((item) => (
+              <li
+                key={item.id}
+                className="flex items-center justify-between gap-2 border rounded-md px-2 py-1 text-xs"
+              >
+                <div className="flex flex-col">
+                  <span className="font-medium">
+                    {item.city}, {item.country}
+                  </span>
+                  <span className="text-[10px] text-slate-500">
+                    {new Date(item.createdAt).toLocaleString()}
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => handleHistorySearch(item)}
+                    className="px-2 py-1 rounded-md border text-[11px]"
+                  >
+                    Search
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => removeItem(item.id)}
+                    className="px-2 py-1 rounded-md border border-red-400 text-[11px] text-red-500"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </div>
