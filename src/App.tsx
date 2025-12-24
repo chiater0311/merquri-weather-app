@@ -1,3 +1,4 @@
+import ThemeToggle from "./components/ThemeToggle";
 import WeatherSearchForm from "./components/WeatherSearchForm";
 
 const App = () => {
@@ -13,6 +14,9 @@ const App = () => {
         px-4
       "
     >
+      <div className="absolute top-4 right-4">
+        <ThemeToggle />
+      </div>
       <WeatherSearchForm />
     </div>
   );
