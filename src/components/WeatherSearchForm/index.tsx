@@ -45,6 +45,7 @@ const WeatherSearchForm = () => {
 
   const performSearch = async (city: string, country: string) => {
     try {
+      //to clear previous searching errors and results
       clearErrors("root");
       setWeather(null);
 

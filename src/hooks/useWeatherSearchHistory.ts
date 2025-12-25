@@ -44,7 +44,7 @@ export const useWeatherSearchHistory = () => {
     if (!trimmedCity || !trimmedCountry) return;
 
     setItems((prev) => {
-      // optional: avoid duplicates with same city+country
+      // to avoid duplicates with same city+country
       const withoutDuplicate = prev.filter(
         (item) =>
           item.city.toLowerCase() !== trimmedCity.toLowerCase() ||
