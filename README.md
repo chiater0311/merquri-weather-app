@@ -43,7 +43,7 @@ You MUST configure environment variables before running.
 - Click to re-search
 - Delete individual record
 - **Delete confirmation modal added** to prevent accidental removal
-  `![Delete Confirmation](public/preview/delete-confirmation-preview.png)`
+  ![Delete Confirmation](./public/preview/delete-confirmation-preview.png)
 
 ### 🌓 Theme Support
 
@@ -61,21 +61,19 @@ You MUST configure environment variables before running.
 
 ### 💻 Desktop Preview
 
-`![Desktop Preview](public/preview/preview-desktop.png)`
+![Desktop Preview](./public/preview/preview-desktop.png)
 
 ---
 
 ### 📱 Mobile Preview
 
-`![Mobile Preview](public/preview/preview-mobile.png)`
+![Mobile Preview](./public/preview/preview-mobile.png)
 
 ---
 
 ### 🌙 Dark Mode Preview
 
-`![Dark Mode Preview](public/preview/preview-dark.png)`
-
----
+![Dark Mode Preview](./public/preview/preview-dark.png)
 
 ---
 
@@ -94,5 +92,3 @@ So this logic is implemented:
 | Any other weather | Cloud      |
 
 This ensures consistency with available assets.
-
----
