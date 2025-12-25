@@ -57,6 +57,22 @@ You MUST configure environment variables before running.
 
 ---
 
+## 🌤️ Weather Icon Logic (Self Assumption)
+
+Since only **two weather images** were provided:
+
+- ☀️ Sun
+- ☁️ Cloud
+
+So this logic is implemented:
+
+| Condition         | Icon Shown |
+| ----------------- | ---------- |
+| `"clear"` weather | Sun        |
+| Any other weather | Cloud      |
+
+This ensures consistency with available assets.
+
 ## 🖼️ Preview
 
 ### 💻 Desktop Preview
@@ -74,21 +90,3 @@ You MUST configure environment variables before running.
 ### 🌙 Dark Mode Preview
 
 ![Dark Mode Preview](./public/preview/preview-dark.png)
-
----
-
-## 🌤️ Weather Icon Logic (Self Assumption)
-
-Since only **two weather images** were provided:
-
-- ☀️ Sun
-- ☁️ Cloud
-
-So this logic is implemented:
-
-| Condition         | Icon Shown |
-| ----------------- | ---------- |
-| `"clear"` weather | Sun        |
-| Any other weather | Cloud      |
-
-This ensures consistency with available assets.
