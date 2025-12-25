@@ -1,73 +1,98 @@
-# React + TypeScript + Vite
+# 🌤️ Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and user-friendly weather application built with **React + TypeScript + Tailwind CSS**.  
+Users can search weather by **City + Country**, view real-time conditions, browse search history and toggle **Dark / Light mode**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎨 UI & Design Reference
 
-## React Compiler
+This project strictly follows the design from Figma:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+👉 https://www.figma.com/file/4QjlaIXuvEEMUdvvBKjDZH/Weather-App?node-id=0%3A1&t=uTr6LSt1NTovAc
 
-## Expanding the ESLint configuration
+Weather API Source:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+👉 https://api.openweathermap.org
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## ⚙️ Environment Setup
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+You MUST configure environment variables before running.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1️⃣ Copy `.env.example`  
+2️⃣ Create `.env` in project root  
+3️⃣ Fill in your OpenWeather API key
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📦 Features
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 🔍 Weather Search
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Search by city + country
+- Weather fetched from **OpenWeather API**
+- Axios used for API requests
+- Displays:
+  - Current temperature
+  - High & Low temperature
+  - Humidity
+  - Weather description
+  - Local date & time of the searched location
+
+### 🕑 Search History
+
+- Stores history locally
+- Click to re-search
+- Delete individual record
+- **Delete confirmation modal added** to prevent accidental removal
+  `![Delete Confirmation](public/preview/delete-confirmation-preview.png)`
+
+### 🌓 Theme Support
+
+- Light Mode
+- Dark Mode
+
+### 📱 Fully Responsive
+
+- Mobile friendly
+- Matches provided Figma design
+
+---
+
+## 🖼️ Preview
+
+### 💻 Desktop Preview
+
+`![Desktop Preview](public/preview/preview-desktop.png)`
+
+---
+
+### 📱 Mobile Preview
+
+`![Mobile Preview](public/preview/preview-mobile.png)`
+
+---
+
+### 🌙 Dark Mode Preview
+
+`![Dark Mode Preview](public/preview/preview-dark.png)`
+
+---
+
+---
+
+## 🌤️ Weather Icon Logic (Self Assumption)
+
+Since only **two weather images** were provided:
+
+- ☀️ Sun
+- ☁️ Cloud
+
+So this logic is implemented:
+
+| Condition         | Icon Shown |
+| ----------------- | ---------- |
+| `"clear"` weather | Sun        |
+| Any other weather | Cloud      |
+
+This ensures consistency with available assets.
+
+---
