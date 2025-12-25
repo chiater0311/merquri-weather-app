@@ -15,7 +15,7 @@ const getInitialTheme: () => Theme = () => {
       return stored;
     }
 
-    // fallback: system preference
+    // fallback: check system preference
     const prefersDark = window.matchMedia?.(
       "(prefers-color-scheme: dark)"
     ).matches;

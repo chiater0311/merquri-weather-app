@@ -1,4 +1,3 @@
-// src/hooks/useWeatherSearchHistory.ts
 import { useEffect, useState } from "react";
 import type { WeatherSearchHistoryItem } from "../types/weather";
 
@@ -33,7 +32,12 @@ export const useWeatherSearchHistory = () => {
     }
   }, [items]);
 
-  const addItem = (city: string, country: string) => {
+  const addItem = (
+    city: string,
+    country: string,
+    dt?: number,
+    timezone?: number
+  ) => {
     const trimmedCity = city.trim();
     const trimmedCountry = country.trim();
 
@@ -52,6 +56,8 @@ export const useWeatherSearchHistory = () => {
         city: trimmedCity,
         country: trimmedCountry,
         createdAt: new Date().toISOString(),
+        dt,
+        timezone,
       };
 
       return [newItem, ...withoutDuplicate];

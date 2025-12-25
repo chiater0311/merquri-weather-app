@@ -18,6 +18,7 @@ function ThemeToggle() {
         shadow-sm
         hover:bg-slate-50 dark:hover:bg-slate-700
         transition
+        text-black dark:text-white
       "
       aria-label="Toggle theme"
     >
