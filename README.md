@@ -22,6 +22,7 @@ You MUST configure environment variables before running.
 1️⃣ Copy `.env.example`  
 2️⃣ Create `.env` in project root  
 3️⃣ Fill in your OpenWeather API key
+
 ⚠️ Note: I will include my API key in the email to HR to ease the testing process.
 
 ## 📦 Features
