@@ -47,8 +47,8 @@ const WeatherResult = ({ weather }: WeatherResultProps) => {
         H: {weather.main.temp_max}° L: {weather.main.temp_min}°
       </p>
 
-      <div className="flex justify-between items-end text-[#666666] dark:text-white gap-3 lg:gap-6 -translate-y-3/4 lg:-translate-y-0">
-        <p className="font-bold">
+      <div className="flex justify-between items-end text-[#666666] dark:text-white gap-3 -translate-y-3/4 lg:-translate-y-0">
+        <p className="font-bold min-w-[25%]">
           {weather.name}, {weather.sys.country}
         </p>
 

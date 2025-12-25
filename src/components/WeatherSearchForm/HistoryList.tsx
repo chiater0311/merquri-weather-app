@@ -1,7 +1,11 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { TrashIcon } from "@heroicons/react/24/solid";
+import { useState } from "react";
+
+import ConfirmationModal from "../ui/ConfirmationModal";
+
 import type { WeatherSearchHistoryItem } from "../../types/weather";
 import { formatDateTime } from "../../utils/formatDateTime";
-import { TrashIcon } from "@heroicons/react/24/solid";
 
 type HistoryListProps = {
   history: WeatherSearchHistoryItem[];
@@ -16,6 +20,8 @@ const HistoryList = ({
   onDelete,
   onClearAll,
 }: HistoryListProps) => {
+  const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
+
   if (history.length === 0) return null;
 
   return (
@@ -73,7 +79,7 @@ const HistoryList = ({
 
               <button
                 type="button"
-                onClick={() => onDelete(item.id)}
+                onClick={() => setPendingDeleteId(item.id)}
                 className="
                           w-[34px] h-[34px] 
                           flex items-center justify-center
@@ -94,6 +100,21 @@ const HistoryList = ({
           </li>
         ))}
       </ul>
+
+      <ConfirmationModal
+        open={pendingDeleteId !== null}
+        title="Delete history record?"
+        message="Are you sure you want to delete this search record? This action cannot be undone."
+        confirmText="Delete"
+        cancelText="Cancel"
+        onConfirm={() => {
+          if (pendingDeleteId) {
+            onDelete(pendingDeleteId);
+            setPendingDeleteId(null);
+          }
+        }}
+        onCancel={() => setPendingDeleteId(null)}
+      />
     </div>
   );
 };
