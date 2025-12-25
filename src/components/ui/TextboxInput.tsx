@@ -29,7 +29,7 @@ const TextboxInput = ({
           h-[48px] lg:h-[60px]
           border rounded-xl 
           px-3 pt-4 pb-1 
-          text-sm 
+          text-xs lg:text-sm 
           outline-none transition-all
 
           ${
@@ -52,16 +52,16 @@ const TextboxInput = ({
           transition-all duration-200 ease-in-out
 
           top-1.5
-          text-xs
+          text-xs lg:text-sm
           text-gray-500 dark:text-gray-400
 
           peer-placeholder-shown:top-1/2
           peer-placeholder-shown:-translate-y-1/2
-          peer-placeholder-shown:text-sm
+          peer-placeholder-shown:text-xs lg:text-sm
 
           peer-focus:top-1.5
           peer-focus:-translate-y-0
-          peer-focus:text-xs
+          peer-focus:text-xs lg:text-sm
           peer-focus:text-blue-600 dark:peer-focus:text-blue-400
 
           ${hasError ? "!text-red-500 dark:!text-red-400" : ""}
@@ -71,7 +71,7 @@ const TextboxInput = ({
       </label>
 
       {hasError && (
-        <p className="absolute -bottom-5 left-0 text-xs text-red-500 dark:text-red-400">
+        <p className="absolute -bottom-5 left-0 text-xs lg:text-sm text-red-500 dark:text-red-400">
           {error}
         </p>
       )}

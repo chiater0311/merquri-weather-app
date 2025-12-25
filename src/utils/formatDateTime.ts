@@ -1,16 +1,15 @@
 export function formatDateTime(dt: number, timezone: number): string {
-  const utc = dt * 1000;
-  const localTime = utc + timezone * 1000;
-  const date = new Date(localTime);
+  const ms = (dt + timezone) * 1000;
+  const date = new Date(ms);
 
   const pad = (n: number) => n.toString().padStart(2, "0");
 
-  const day = pad(date.getDate());
-  const month = pad(date.getMonth() + 1);
-  const year = date.getFullYear();
+  const day = pad(date.getUTCDate());
+  const month = pad(date.getUTCMonth() + 1);
+  const year = date.getUTCFullYear();
 
-  let hours = date.getHours();
-  const minutes = pad(date.getMinutes());
+  let hours = date.getUTCHours();
+  const minutes = pad(date.getUTCMinutes());
   const ampm = hours >= 12 ? "pm" : "am";
 
   hours = hours % 12 || 12;

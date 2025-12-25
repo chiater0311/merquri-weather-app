@@ -12,7 +12,7 @@ function ThemeToggle() {
       className="
         flex items-center gap-2
         px-3 py-1.5
-        rounded-full border text-xs
+        rounded-full border text-xs lg:text-sm
         bg-white/80 dark:bg-slate-800/80
         border-slate-300 dark:border-slate-600
         shadow-sm

@@ -88,7 +88,7 @@ const WeatherSearchForm = () => {
   };
 
   return (
-    <div className="flex flex-col gap-24">
+    <div className="flex flex-col gap-24 w-full lg:w-3xl">
       <SearchBar
         onSubmit={handleSubmit(onSubmit)}
         onClear={handleClearForm}
@@ -100,7 +100,7 @@ const WeatherSearchForm = () => {
         }}
         isSubmitting={isSubmitting}
       />
-      <div className="w-full max-w-2xl space-y-6 bg-white/20 dark:bg-[#1A1A1A4D]/70 p-6 rounded-xl shadow-md">
+      <div className="w-full space-y-5 bg-white/20 dark:bg-[#1A1A1A4D]/70 p-6 rounded-xl shadow-md">
         <WeatherResult weather={weather} />
 
         <HistoryList

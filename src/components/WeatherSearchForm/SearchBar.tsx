@@ -30,7 +30,7 @@ const SearchBar = ({
 }: SearchBarProps) => {
   return (
     <>
-      <form onSubmit={onSubmit} className="w-full max-w-2xl mb-8">
+      <form onSubmit={onSubmit} className="w-full mb-8">
         <div className="flex items-start gap-3 w-full">
           {/* City Field */}
           <TextboxInput
@@ -100,7 +100,7 @@ const SearchBar = ({
         {/* API / root-level errors */}
         {errors.root?.message && (
           <div className="mt-8 p-3 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 capitalize">
-            <p className="text-sm text-red-600 dark:text-red-400">
+            <p className="text-xs lg:text-sm text-red-600 dark:text-red-400">
               {errors.root.message}
             </p>
           </div>

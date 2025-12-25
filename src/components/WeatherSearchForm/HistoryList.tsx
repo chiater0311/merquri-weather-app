@@ -19,9 +19,9 @@ const HistoryList = ({
   if (history.length === 0) return null;
 
   return (
-    <div className="mt-6 text-black dark:text-white bg-white/20 dark:bg-[#1A1A1A4D]/70 px-4 py-6 rounded-lg">
+    <div className="text-black dark:text-white bg-white/20 dark:bg-[#1A1A1A4D]/70 px-4 py-6 rounded-lg">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-sm font-semibold">Search History</h2>
+        <h2 className="text-xs lg:text-sm font-semibold">Search History</h2>
         {history.length > 1 && (
           <button
             type="button"
@@ -37,13 +37,13 @@ const HistoryList = ({
         {history.map((item) => (
           <li
             key={item.id}
-            className="h-[60px] flex items-center justify-between gap-2 rounded-xl p-5 text-xs bg-white/50 dark:bg-[#2A2A2A] hover:bg-white/70 dark:hover:bg-[#3A3A3A] transition-colors cursor-pointer"
+            className="h-[60px] flex items-center justify-between gap-2 rounded-xl p-5 text-xs lg:text-sm bg-white/50 dark:bg-[#2A2A2A] hover:bg-white/70 dark:hover:bg-[#3A3A3A] transition-colors cursor-pointer"
           >
             <div className="flex flex-col lg:flex-row lg:justify-between w-full">
               <span className="font-medium capitalize">
                 {item.city}, {item.country}
               </span>
-              <span className="text-xs text-black dark:text-white/50">
+              <span className="text-xs lg:text-sm text-black dark:text-white/50">
                 {item.dt != null && item.timezone != null
                   ? formatDateTime(item.dt, item.timezone)
                   : new Date(item.createdAt).toLocaleString()}
